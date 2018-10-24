@@ -1,0 +1,235 @@
+$base-colour: #fbfce8;
+$light-accent: #a2babe;
+$dark-accent: #161f2e;
+$bold-accent: #671722;
+$header-font: "Yanone Kaffeesatz",
+"Open Sans Bold",
+"Arial Black",
+sans-serif;
+$body-font: "Abel",
+"century gothic",
+"open sans",
+"Arial",
+sans-serif;
+
+@mixin breakpoint($point) {
+    @if $point==desktop {
+        @media (min-width: 70em) {
+            @content ;
+        }
+    }
+
+    @else if $point==laptop {
+        @media (min-width: 64em) {
+            @content ;
+        }
+    }
+
+    @else if $point==tablet {
+        @media (max-width: 50em) {
+            @content ;
+        }
+    }
+
+    @else if $point==phablet {
+        @media (min-width: 37.5em) {
+            @content ;
+        }
+    }
+
+    @else if $point==mobileonly {
+        @media (max-width: 37.5em) {
+            @content ;
+        }
+
+    }
+}
+
+html {
+    background: $base-colour;
+    overflow-x: hidden;
+}
+
+nav#navbar {
+    font-family: $header-font;
+    font-size: 1.25em;
+    text-align: right;
+    background: white;
+    box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    top: 0;
+
+    .navbar-list {
+        margin: 0px;
+
+        @include breakpoint(mobileonly) {
+            text-align: center;
+        }
+
+        a {
+            &.active {
+                li {
+                    color: $light-accent;
+                }
+            }
+        }
+
+        .navbar-item {
+            color: black;
+            list-style-type: none;
+            display: inline-block;
+            padding: 15px 8px;
+            margin: 0px;
+            transition: color 0.2s;
+
+
+
+            @include breakpoint(mobileonly) {
+                padding: 8px 0px;
+                margin: 0px;
+                //                width: 25%;
+                width: 33.33%;
+                float: left;
+            }
+
+            &:hover {
+                color: $light-accent;
+            }
+
+
+        }
+
+    }
+
+    a {
+        text-decoration: none;
+
+    }
+}
+
+.section {
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    h1 {
+        font-family: $header-font;
+        text-align: center;
+        font-size: 60px;
+    }
+
+
+
+    p {
+        font-family: $body-font;
+        font-size: 16px;
+        padding: 12px;
+        color: $dark-accent;
+
+    }
+
+
+}
+
+#landing {
+    @include breakpoint(tablet) {
+        text-align: center;
+    }
+
+    margin-top: 75px;
+
+    #avatar {
+        width: 100%;
+        height: 100%;
+
+        @include breakpoint(tablet) {
+            width: 50%;
+        }
+
+    }
+
+    #bio {
+        margin-top: 25px;
+    }
+}
+
+#projects {
+    .tag-container {
+        padding: 12px;
+    }
+
+    .tag {
+        font-size: 13px;
+        background: $bold-accent;
+        border-radius: 3px 0 0 3px;
+        color: white;
+        display: inline-block;
+        height: 26px;
+        line-height: 26px;
+        padding: 0 20px 0 23px;
+        position: relative;
+        margin: 0 10px 10px 0;
+        text-decoration: none;
+        -webkit-transition: color 0.2s;
+    }
+
+    .tag::before {
+        background: $base-colour;
+        border-radius: 10px;
+        box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+        content: '';
+        height: 6px;
+        left: 10px;
+        position: absolute;
+        width: 6px;
+        top: 10px;
+    }
+
+    .tag::after {
+        background: $base-colour;
+        border-bottom: 13px solid transparent;
+        border-left: 10px solid $bold-accent;
+        border-top: 13px solid transparent;
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .project-listing {
+        margin-bottom: 100px;
+
+        @include breakpoint(tablet) {
+            text-align: center;
+        }
+
+        p {
+            text-align: left;
+        }
+
+        .project-img {
+            width: 100%;
+
+            @include breakpoint(tablet) {
+                width: 50%;
+                height: 50%;
+            }
+        }
+
+        &.last {
+            margin-bottom: 0px;
+        }
+
+
+    }
+}
+
+#contact {
+    text-align: center;
+
+    .contact-icon {
+        margin: 0px 20px;
+        width: 64px;
+    }
+}
