@@ -66,6 +66,9 @@ nav#navbar {
         width: 50%; } }
   #landing #bio {
     margin-top: 25px; }
+    #landing #bio p {
+      padding-top: 0;
+      padding-bottom: 0; }
 
 #projects .tag-container {
   padding: 12px; }
